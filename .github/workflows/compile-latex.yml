@@ -1,0 +1,29 @@
+on:
+    pull_request: 
+        branches: 
+            - main
+        paths:
+            - 'docs/**'
+jobs:
+    compile:
+        runs-on: ubuntu-latest
+        env:
+            working_directory: docs
+            pdf_name: INF21A_Berfelde_4109154_Studienarbeit
+        steps:
+          - name: Checkout Git repository
+            uses: actions/checkout@v2
+          - name: Compile LaTeX document
+            uses: xu-cheng/latex-action@v2
+            with:
+                working_directory: ${{ env.working_directory }}
+                root_file: main.tex
+          - name: Rename main.pdf
+            run: |
+              mv "$working_directory/main.pdf" "$pdf_name.pdf"
+          - name: Upload pdf artifact
+            uses: actions/upload-artifact@v2
+            with:
+              name: ${{ env.pdf_name }}
+              path: ${{ env.pdf_name }}.pdf
+              if-no-files-found: error
