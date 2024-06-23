@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: Backend
+  description: Backend for the ProgressiveGymTracker.com Frontend.
+  version: 0.0.1
+
+servers:
+  - url: localhost:6000
+    description: Test Server
+
+paths:
+  /login:
+    get:
+      summary: check if still logged in.
+      responses:
+        '200':
+          description: boolean of user beeing logged in or not
+        '500':
+          description: something went wrong
+    post:
+      summary: Login to an account.
+      description: Login to a user's account with the username and password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+      responses:
+        '200':
+          description: Successfully logged in.
+        '401':
+          description: Failed to login with these values. Please try again.
+    put:
+      summary: Create a new account
+      description: Create a new account by a users request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/login'
+      responses:
+        '200':
+          description: Successfully created account
+        '400':
+          description: Failed to create account
+  /logout:
+    put:
+      summary: logout
+      description: delete the auth cookie.
+      responses:
+        '200':
+          description: successfully logged out.
+        '403':
+          description: Forbidden
+  /shifts:
+    get:
+      summary: Get all Shifts
+      description: Get all Shifts of a User, mainly for the dashboard.
+      responses:
+        '200':
+          description: Successfully requested body.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/shifts'
+        '403':
+          description: Forbidden
+    post:
+      summary: Create a new shift
+      description: Create a new Shift by the user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shiftRecive'
+      responses:
+        '200':
+          description: Successfully posted body.
+        '403':
+          description: Forbidden
+  /shifts/{id}:
+    patch:
+      summary: Patch a Shift
+      description: Patch a Shift by its ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            description: Id of an exercise
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/shift'
+      responses:
+        '200':
+          description: Successfully updated shift
+        '403':
+          description: Forbidden or failed to update
+    delete:
+      summary: Delete a Shift
+      description: Delete a Shift by its ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            description: Id of an exercise
+      responses:
+        '200':
+          description: Successfully deleted Shift
+        '403':
+          description: Forbidden or failed to delete
+components:
+  schemas:
+    login:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Username to use for login
+        password:
+          type: string
+          description: Password to use for login
+    shift:
+      date:
+        type: string
+        format: date
+        description: date of the shift
+      day:
+        type: string
+        description: Weekday of the shift
+      time:
+        type: string
+        description: Time of the shift
+      trade:
+        type: boolean
+        description: shows if trading the shift is activated
+      search:
+        type: array
+        items:
+          type: object
+          properties:
+            selected: 
+              type: boolean
+            name:
+              type: string
+            offers:
+              type: integer
+      uid:
+        type: string
+        description: id of the shift
+    shiftRecive:
+      datum:
+        type: string
+        format: date
+        description: date of the shift
+      day:
+        type: string
+        description: Weekday of the shift
+      time:
+        type: string
+        description: Time of the shift
+    shifts:
+      type: array
+      items:
+        $ref: '#/components/schemas/shift'

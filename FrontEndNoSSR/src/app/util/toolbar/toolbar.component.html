@@ -1,0 +1,15 @@
+<div class="toolbar_container">
+  <img class="logo" src="assets/logo_bg.webp" alt="" role="button" [routerLink]="''">
+  <div class="toolbar_text">
+    <div class="login_and_register" *ngIf="!loggedIn">
+      <div class="toolbar_login" [routerLink]="'login'">Login</div>
+      <div class="toolbar_register" [routerLink]="'register'">Register</div>
+    </div>
+    <div class="login_and_register" *ngIf="loggedIn">
+      <div class="toolbar_logout">Logout</div>
+    </div>
+    <div class="menu_button" role="button" [routerLink]="'dashboard'"></div>
+  </div>
+</div>
+
+<!--TODO: Menu-->

@@ -1,0 +1,30 @@
+.faq-element-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.faq-element-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-element-body {
+  //padding: 10px;
+}
+
+.faq-element-head div {
+  flex-grow: 1;
+}
+
+.faq-element-head img {
+  width: 20px;
+  height: 20px;
+}
+
+h2 {
+  margin: 0;
+  padding: 10px 10px;
+}

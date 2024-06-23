@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login_background">
+  <div>Register</div>
+  <div *ngIf="this.errormessage!=''" style="color: red">{{this.errormessage}}</div>
+  <input
+    type="text"
+    formControlName="username"
+    placeholder="Username"
+    class="input"
+    [ngClass]="{ 'invalid-input': registerForm.controls['username'].invalid && registerForm.controls['username'].touched }"
+  >
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Password"
+    class="input"
+    [ngClass]="{ 'invalid-input': registerForm.controls['password'].invalid && registerForm.controls['password'].touched }"
+  >
+  <input
+    type="password"
+    formControlName="passwordR"
+    placeholder="Password repeat"
+    class="input"
+    [ngClass]="{ 'invalid-input': registerForm.controls['passwordR'].invalid && registerForm.controls['passwordR'].touched || registerForm.errors?.['mismatch'] }"
+  >
+  <div [ngClass]="{'enabled-class': !registerForm.invalid, 'disabled-class': registerForm.invalid}" (click)="registerForm.valid && onSubmit()" role="button">Register</div>
+  <div [routerLink]="'login'">LOGIN INSTEAD</div>
+</form>

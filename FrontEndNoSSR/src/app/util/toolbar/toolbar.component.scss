@@ -1,0 +1,96 @@
+@import "../../../styles";
+
+.toolbar_container {
+  background-color: $primary_text;
+  height: $toolbar_height;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+
+  cursor: pointer;
+}
+
+.toolbar_text {
+  display: flex;
+  flex-direction: row;
+}
+
+.login_and_register {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu_button {
+  height: $toolbar_height;
+  width: $toolbar_height;
+
+  background-image: url("../../../assets/menu.svg");
+  background-size: cover;
+
+  cursor: pointer;
+}
+
+.menu_button:hover {
+  background-image: url("../../../assets/menu_hover.svg");
+}
+
+.toolbar_login {
+  border: 2px solid $primary;
+  border-right: unset;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 10px;
+  color: $primary;
+
+  cursor: pointer;
+}
+
+.toolbar_login:hover {
+  border: 2px solid $accent;
+  border-right: unset;
+  background-color: $accent;
+  color: $accent_text;
+}
+
+.toolbar_register {
+  border: 2px solid $primary;
+  border-left: unset;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: $primary;
+  padding: 10px;
+  color: $primary_text;
+
+  cursor: pointer;
+}
+
+.toolbar_register:hover {
+  border: 2px solid $accent;
+  border-left: unset;
+  background-color: $accent;
+  color: $accent_text;
+}
+
+.toolbar_logout {
+  border: 2px solid $primary;
+  border-radius: 10px;
+  padding: 10px;
+  color: $primary;
+
+  cursor: pointer;
+}
+
+.toolbar_logout:hover {
+  border: 2px solid $accent;
+  background-color: $accent;
+  color: $accent_text;
+}

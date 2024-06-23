@@ -1,0 +1,67 @@
+<h1>Shifts</h1>
+<h2>Create new Shift</h2>
+<form (ngSubmit)="createShift(createForm)" #createForm="ngForm" class="createForm">
+  <input type="date" [(ngModel)]="newShift.datum" name="datum" required class="input">
+
+  <div class="dropdown">
+    <button class="dropdown-toggle" type="button" (click)="toggleDropdown()">
+      <div *ngIf="selectedOption">{{selectedOption}}</div>
+      <div *ngIf="selectedOption == null" class="option">Select an Option <img src="assets/plus.svg"></div>
+    </button>
+    <div *ngIf="isOpen" class="dropdown-menu">
+      <a *ngFor="let option of options" (click)="selectOption(option)">
+        {{ option }}
+      </a>
+    </div>
+  </div>
+
+  <input type="text" [(ngModel)]="newShift.day" name="day" required class="input" placeholder="Day">
+
+  <button type="submit" class="save" [ngClass]="{'enabled-class': createForm.valid, 'disabled-class': !createForm.valid}">Save</button>
+</form>
+
+<h2>Next shifts</h2>
+<div *ngIf="shifts?.length === 0">You do not have any shifts added.</div>
+<div *ngFor="let shift of shifts">
+  <app-faq-element [open]="false">
+    <ng-template #question>
+      <div class="header">{{shift.day}}
+        <div>{{shift.time}} {{getFormattedDate(shift.datum)}}</div>
+      </div>
+    </ng-template>
+    <ng-template #answer>
+      <div class="shiftContainer">
+        <div class="left">
+          <table border="1">
+            <thead>
+            <tr>
+              <th>Offers</th>
+              <th>Searching</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let offers of shift.search">
+              <td>{{offers.offers}}</td>
+              <td><input type="checkbox" [(ngModel)]="offers.selected"
+                         [disabled]="offers.name === shift.time">{{offers.name}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="right">
+          <div class="optionContainer">
+            <div class="optionElements" (click)="delete(shift)">
+              <div>Delete Shift:</div>
+              <img src="assets/delete.svg">
+            </div>
+            <div class="optionElements">
+              <div>Active Trading:</div>
+              <input type="checkbox" [(ngModel)]="shift.trade">
+            </div>
+          </div>
+          <div class="save" (click)="save(shift)">Save</div>
+        </div>
+      </div>
+    </ng-template>
+  </app-faq-element>
+</div>

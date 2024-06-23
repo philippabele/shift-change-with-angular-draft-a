@@ -1,0 +1,29 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="login_background">
+  <div>LOGIN</div>
+  <input
+    type="text"
+    name="username"
+    ngModel
+    #username="ngModel"
+    required
+    [ngClass]="{ 'invalid-input': username.invalid && username.touched }"
+    placeholder="Username"
+
+    class="input"
+  >
+  <input
+    type="password"
+    name="password"
+    ngModel
+    #password="ngModel"
+    required
+    [ngClass]="{ 'invalid-input': password.invalid && password.touched }"
+    placeholder="Password"
+
+    class="input"
+  >
+  <div [ngClass]="{'enabled-class': !loginForm.invalid, 'disabled-class': loginForm.invalid}" (click)="!loginForm.invalid && onSubmit(loginForm)" role="button">Login</div>
+  <div [routerLink]="'register'">REGISTER INSTEAD</div>
+</form>
+
+<!--TODO: Logout-->

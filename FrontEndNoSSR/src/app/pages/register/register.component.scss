@@ -1,0 +1,69 @@
+@import "../../../styles";
+
+.login_background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background-color: $primary_text;
+
+  height: 250px;
+  width: 300px;
+
+  border-radius: 10px;
+  border: 2px solid $primary;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  color: $primary;
+
+  padding: 20px;
+}
+
+input {
+  background-color: $secondary;
+  color: $secondary_text;
+}
+
+.invalid-input {
+  border: 2px solid red;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.enabled-class {
+  border-radius: 10px;
+  border: 2px solid $primary;
+  padding: 10px;
+
+  background-color: $primary_text;
+  color: $primary;
+  cursor: pointer;
+}
+
+.enabled-class:hover {
+  border: 2px solid $accent;
+  background-color: $accent;
+  color: $accent_text;
+}
+
+.disabled-class {
+  border-radius: 10px;
+  border: 2px solid grey;
+  padding: 10px;
+
+  background-color: grey;
+  color: darkgray;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+}

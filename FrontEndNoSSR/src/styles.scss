@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary: #6d9bdc;
+$primary_text: #212121;
+$secondary: #F5F5F5;
+$secondary_text: #9E9E9E;
+$accent: #1E88E5;
+$accent_text: #FFFFFF;
+
+$footer_height: 80px;
+$toolbar_height: 80px;
+
+body {
+  margin: 0;
+
+  color: $primary_text;
+
+  min-height: 100dvh;
+
+  background-image: url("assets/bg.webp");
+  background-size: cover;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: $secondary;
+}
+
+* {
+  -webkit-user-drag: none;
+  user-select: none;
+
+  scrollbar-width: thin;
+  scrollbar-color: $primary $primary_text;
+
+}
+
+.container_style {
+  width: 1200px;
+  max-width: 90dvw;
+  align-self: center;
+
+  background-color: rgba(33, 33, 33, 0.90);
+  padding: 20px;
+  margin: 20px;
+
+  color: #F5F5F5;
+}
+
+//Header/Footer: Dark Gray/Black (#212121) with White text (#FFFFFF).
+//Background: Light Gray (#F5F5F5) to maintain a clean and inviting look.
+//Primary Buttons/Icons: Red (#E53935) for actions like "Sign Up", "Login", and key functionalities within the app.
+//Secondary Buttons/Links: Blue (#1E88E5) for less prominent actions and links.
+//Text: Dark Gray (#212121) for main text, Medium Gray (#9E9E9E) for secondary text.

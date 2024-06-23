@@ -1,0 +1,12 @@
+<div class="faq-element-container">
+  <h2 class="faq-element-head" (click)="open = !open">
+    <div *ngIf="questionTemplateRef">
+      <ng-container *ngTemplateOutlet="questionTemplateRef"></ng-container>
+    </div>
+    <img src="assets/plus.svg" role="button" alt="" *ngIf="!open">
+    <img src="assets/close.svg" role="button" alt="" *ngIf="open">
+  </h2>
+  <div class="faq-element-body" *ngIf="open && answerTemplateRef">
+    <ng-container *ngTemplateOutlet="answerTemplateRef"></ng-container>
+  </div>
+</div>

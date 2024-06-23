@@ -1,0 +1,12 @@
+@import "../../../styles";
+
+.footer_container {
+  background-color: $primary_text;
+  color: $secondary;
+  height: $footer_height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

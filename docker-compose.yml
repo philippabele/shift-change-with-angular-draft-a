@@ -1,0 +1,45 @@
+services:
+  frontend:
+    build:
+      context: ./FrontEndNoSSR/
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+    networks:
+      shift-planner:
+        aliases:
+          - "frontend"
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./BackendNew/
+      dockerfile: ./Dockerfile
+    networks:
+      shift-planner:
+        aliases:
+          - "backend"
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
+    networks:
+      shift-planner:
+        aliases:
+          - "postgres"
+    volumes:
+      - ./postgres_data/:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 15s
+      timeout: 5s
+      start_period: 10s
+      start_interval: 1s
+      retries: 5
+networks:
+  shift-planner:

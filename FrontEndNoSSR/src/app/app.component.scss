@@ -1,0 +1,19 @@
+@import "../styles";
+
+.content_container {
+  //min-height: calc(100dvh - $toolbar_height - $footer_height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.c{
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container{
+  padding: 10px;
+}
